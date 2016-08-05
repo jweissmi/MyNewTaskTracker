@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="jumbotron">
+    <h1>My Task Tracker</h1>
+    <p class="lead">An awesome sample of using authorization and creating our own CRUD.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Add a New Task</h2>
+        <p>
+            Add a new task to your task list.
+        </p>
+        @*<p><a class="btn btn-default" href="@Url.Action("Create", "TaskTrack>Add task &raquo;</a></p>*@
+    </div>
+    <div class="col-md-4">
+        <h2>View my Tasks</h2>
+        <p>
+            Display your list of Tasks.
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("GetTaskList", "TaskTracker")">Show List &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2></h2>
+        <p></p>
+        <p></p>
+    </div>
+</div>

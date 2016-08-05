@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="TaskTracker" Class="TaskTrackerDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-V5M0IVC;Initial Catalog=TaskTracker;Integrated Security=True;Encrypt=False;TrustServerCertificate=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="TaskTrackerConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TaskOwner" Member="TaskOwners">
+    <Type Name="TaskOwner">
+      <Column Name="TaskId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="TaskList_TaskOwner" Member="TaskList" ThisKey="TaskId" OtherKey="TaskID" Type="TaskList" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TaskList" Member="TaskLists">
+    <Type Name="TaskList">
+      <Column Name="TaskID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TaskName" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="DueDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="TaskText" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="TaskComplete" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="TaskList_TaskOwner" Member="TaskOwners" ThisKey="TaskID" OtherKey="TaskId" Type="TaskOwner" />
+      <Association Name="TaskList_TaskList" Member="TaskList2" ThisKey="TaskID" OtherKey="TaskID" Type="TaskList" Cardinality="One" />
+      <Association Name="TaskList_TaskList" Member="TaskList1" ThisKey="TaskID" OtherKey="TaskID" Type="TaskList" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
