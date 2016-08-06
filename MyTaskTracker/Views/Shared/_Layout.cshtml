@@ -30,9 +30,9 @@
                             My Tasks <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Index", "Index", "Movies")</li>
-                            <li>@Html.ActionLink("Add a Task", "Create", "Movies")</li>
-                            <li>@Html.ActionLink("Task List", "GetTaskList", "Movies")</li>
+                            <li>@Html.ActionLink("Index", "Index", "TaskTracker")</li>
+                            <li>@Html.ActionLink("Add a Task", "Create", "TaskTracker")</li>
+                            <li>@Html.ActionLink("Task List", "GetTaskList", "Tasktracker")</li>
                         </ul>
                     </li>
                 </ul>
@@ -44,7 +44,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - TaskMaster Software, Inc.</p>
         </footer>
     </div>
 

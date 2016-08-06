@@ -1,8 +1,47 @@
-﻿@model IEnumerable<MyTaskTracker.Models.TaskTracker>
+﻿@model IEnumerable<MyTaskTracker.Models.TaskList>
 
 @{
     ViewBag.Title = "GetTaskList";
 }
 
 <h2>Get Task List</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TaskID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaskName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaskText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaskComplete)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskComplete)
+            </td><td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TaskID })
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.TaskID })
+            </td>
+        </tr>
+    }
+</table>
 

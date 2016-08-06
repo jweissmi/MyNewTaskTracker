@@ -178,9 +178,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\TaskTracker.cs">
-      <DependentUpon>TaskTracker.dbml</DependentUpon>
-    </Compile>
+    <Compile Include="Models\TaskList.cs" />
     <Compile Include="Models\TaskTracker.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -251,6 +249,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\TaskTracker\Index.cshtml" />
     <Content Include="Views\TaskTracker\GetTaskList.cshtml" />
+    <Content Include="Views\TaskTracker\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
