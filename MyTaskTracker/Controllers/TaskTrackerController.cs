@@ -36,7 +36,7 @@ namespace MyTaskTracker.Controllers
             return View();
         }
 
-        [HttpGet]
+        [HttpPost]
         [Authorize]
         public ActionResult Create([Bind(Include = "TaskName")] TaskList tasklist)
         {
@@ -46,6 +46,25 @@ namespace MyTaskTracker.Controllers
                 return RedirectToAction("GetTaskList");
             }
             return View(tasklist);
+        }
+
+        [Authorize]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+
+            TaskList tasklist = TaskList.GetTaskById(id, db);
+
+            return View(tasklist);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult Edit([Bind(Include = "TaskName, TaskID")] TaskList tasklist)
+        {
+            TaskList.EditTask(tasklist, db);
+            return RedirectToAction("GetTaskList");
         }
     }
 }

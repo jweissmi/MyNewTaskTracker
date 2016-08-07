@@ -34,5 +34,24 @@ namespace MyTaskTracker.Models
             db.TaskOwners.InsertOnSubmit(tskUsr);
             db.SubmitChanges();
         }
+
+        public static void EditTask(TaskList tasklist, TaskTrackerDataContext db)
+        {
+            var orgTaskList = (from t in db.TaskLists
+                               where t.TaskID == tasklist.TaskID
+                               select t).FirstOrDefault();
+
+            orgTaskList.TaskName = tasklist.TaskName;
+            db.SubmitChanges();
+        }
+
+        public static TaskList GetTaskById(int? id, TaskTrackerDataContext db)
+        {
+            TaskList tasklist = (from t in db.TaskLists
+                                 where t.TaskID == id
+                                 select t).FirstOrDefault();
+
+            return tasklist;
+        }
     }
 }
