@@ -66,5 +66,24 @@ namespace MyTaskTracker.Controllers
             TaskList.EditTask(tasklist, db);
             return RedirectToAction("GetTaskList");
         }
+
+        [Authorize]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+
+            TaskList tas = TaskList.GetTaskById(id, db);
+
+            return View(tas);
+        }
+
+        [Authorize]
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed (int? id)
+        {
+            TaskList.DeleteById(id, db);
+            return RedirectToAction("GetTaskList");
+        }
     }
 }

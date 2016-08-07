@@ -251,6 +251,7 @@
     <Content Include="Views\TaskTracker\GetTaskList.cshtml" />
     <Content Include="Views\TaskTracker\Edit.cshtml" />
     <Content Include="Views\TaskTracker\Create.cshtml" />
+    <Content Include="Views\TaskTracker\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

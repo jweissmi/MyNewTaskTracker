@@ -53,5 +53,22 @@ namespace MyTaskTracker.Models
 
             return tasklist;
         }
+
+        public static void DeleteById(int? id, TaskTrackerDataContext db)
+        {
+            var tasksUsersWithSameId = from tu in db.TaskOwners
+                                       where tu.TaskId == id
+                                       select tu;
+
+            db.TaskOwners.DeleteAllOnSubmit(tasksUsersWithSameId);
+            db.SubmitChanges();
+
+            TaskList tas = (from t in db.TaskLists
+                            where t.TaskID == id
+                            select t).FirstOrDefault();
+
+            db.TaskLists.DeleteOnSubmit(tas);
+            db.SubmitChanges();
+        }
     }
 }
