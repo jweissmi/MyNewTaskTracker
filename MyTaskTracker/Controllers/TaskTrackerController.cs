@@ -38,7 +38,7 @@ namespace MyTaskTracker.Controllers
 
         [HttpPost]
         [Authorize]
-        public ActionResult Create([Bind(Include = "TaskName")] TaskList tasklist)
+        public ActionResult Create([Bind(Include = "TaskName, DueDate, TaskText, TaskComplete")] TaskList tasklist)
         {
             if (ModelState.IsValid)
             {
