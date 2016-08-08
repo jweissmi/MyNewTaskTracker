@@ -1,6 +1,7 @@
 ﻿using MyTaskTracker.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,6 +9,20 @@ namespace MyTaskTracker.Models
 {
     public partial class TaskList
     {
+
+        //[DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        //public DateTime? FormattedDate
+        //{
+        //    get
+        //    {
+        //        return Convert.ToDateTime(this.DueDate);
+        //    }
+        //    set
+        //    {
+        //        this.DueDate = value;
+        //    }
+        //}
+
         public static IEnumerable<TaskList> GetTasksByUser(string usrName, TaskTrackerDataContext db)
         {
             var usrTask = from tskUsr in db.TaskOwners
@@ -42,7 +57,9 @@ namespace MyTaskTracker.Models
                                select t).FirstOrDefault();
 
             orgTaskList.TaskName = tasklist.TaskName;
-            db.SubmitChanges();
+            orgTaskList.DueDate = tasklist.DueDate;
+            orgTaskList.TaskText = tasklist.TaskText;
+            orgTaskList.TaskComplete = tasklist.TaskComplete;
         }
 
         public static TaskList GetTaskById(int? id, TaskTrackerDataContext db)
